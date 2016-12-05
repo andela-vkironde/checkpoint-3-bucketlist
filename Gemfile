@@ -7,6 +7,8 @@ gem 'pg'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
+  gem 'faker'
+  gem "rubocop", "~> 0.40.0", require: false
 end
 
 group :development do
@@ -18,6 +20,7 @@ end
 group :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem "coveralls", require: false
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
