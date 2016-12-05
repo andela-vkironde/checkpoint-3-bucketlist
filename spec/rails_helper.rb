@@ -35,6 +35,14 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
   config.include FactoryGirl::Syntax::Methods
+  
+  Shoulda::Matchers.configure do |c|
+    c.integrate do |with|
+      with.test_framework :rspec
+
+      with.library :rails
+    end
+  end
 
 
   # RSpec Rails can automatically mix in different behaviours to your tests
