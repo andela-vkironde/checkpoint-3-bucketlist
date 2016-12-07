@@ -9,6 +9,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
   gem "rubocop", "~> 0.40.0", require: false
+  gem 'pry-rails'
 end
 
 group :development do
