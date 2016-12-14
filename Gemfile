@@ -3,6 +3,7 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'puma', '~> 3.0'
 gem 'pg'
 gem 'bcrypt'
+gem "jwt"
 
 
 group :development, :test do
