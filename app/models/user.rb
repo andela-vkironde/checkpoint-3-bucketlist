@@ -13,5 +13,6 @@ class User < ApplicationRecord
   has_secure_password
 
 
-  has_many :bucket_lists
+  has_many :bucketlists
+  has_many :tokens
 end
