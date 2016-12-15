@@ -1,4 +1,4 @@
-class AuthorizationService
+class Authorization
   def initialize(headers = {})
     @headers = headers
   end
