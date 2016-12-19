@@ -1,10 +1,16 @@
 module API
   module V1
     class ItemsController < ApplicationController
-      before_action :bucketlist_items, only: [:index]
+      before_action :bucketlist_items, only: [:index, :create]
 
       def index
         json_response(paginate_items)
+      end
+
+      def create
+        new_item = @items.new(item_params)
+        new_item.save!
+        json_response(new_item, :created)
       end
 
       def update
