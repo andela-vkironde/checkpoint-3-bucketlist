@@ -2,7 +2,7 @@ module API
   module V1
     class BucketlistsController < ApplicationController
       before_action :user_bucketlists, only: [:index, :create]
-      before_action :set_bucketlist, only: [:show, :destroy]
+      before_action :set_bucketlist, only: [:show, :destroy, :update]
 
       def index
         queried_bucketlists = search || paginate_only
@@ -13,6 +13,11 @@ module API
         new_bucketlist = @bucketlists.new(bucketlist_params)
         new_bucketlist.save!
         json_response(new_bucketlist, :created)
+      end
+
+      def update
+        @bucketlist.update!(bucketlist_params)
+        json_response(@bucketlist)
       end
 
       def show
