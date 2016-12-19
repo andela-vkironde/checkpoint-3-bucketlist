@@ -4,7 +4,7 @@ gem 'puma', '~> 3.0'
 gem 'pg'
 gem 'bcrypt'
 gem "jwt"
-
+gem "active_model_serializers"
 
 group :development, :test do
   gem 'byebug', platform: :mri
