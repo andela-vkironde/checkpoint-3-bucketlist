@@ -15,4 +15,8 @@ class User < ApplicationRecord
 
   has_many :bucketlists
   has_many :tokens
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
