@@ -1,11 +1,17 @@
 module API
   module V1
     class BucketlistsController < ApplicationController
-      before_action :user_bucketlists, only: [:index]
+      before_action :user_bucketlists, only: [:index, :create]
 
       def index
         queried_bucketlists = search || paginate_only
         json_response(queried_bucketlists)
+      end
+
+      def create
+        new_bucketlist = @bucketlists.new(bucketlist_params)
+        new_bucketlist.save!
+        json_response(new_bucketlist, :created)
       end
 
       private
