@@ -2,7 +2,7 @@ module API
   module V1
     class ItemsController < ApplicationController
       before_action :bucketlist_items, only: [:index, :create]
-      before_action :set_bucketlist_item, only: [:show]
+      before_action :set_bucketlist_item, only: [:show, :update]
 
       def index
         json_response(paginate_items)
@@ -15,7 +15,8 @@ module API
       end
 
       def update
-
+        @item.update!(item_params)
+        json_response(@item)
       end
 
       def show
