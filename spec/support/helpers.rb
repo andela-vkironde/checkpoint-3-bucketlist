@@ -3,29 +3,21 @@ module Helpers
     JSON.parse(response.body)
   end
 
-  def token(user)
-    user.tokens.create(token: JsonWebToken.encode(user_id: user.id))
+  def token(user_id)
+    JsonWebToken.encode(user_id: user_id)
   end
 
-  def expired_token(user)
-    JsonWebToken.encode({ user_id: user.id }, (Time.now.to_i - 10))
+  def expired_token(user_id)
+    JsonWebToken.encode({ user_id: user_id }, (Time.now.to_i - 10))
   end
 
-  def invalid_user_token(id)
-    JsonWebToken.encode({ user_id: id }, (Time.now.to_i + 10))
+  def valid_headers(user_id)
+    headers.merge("Authorization" => token(user_id))
   end
 
-  def default_headers
+  def headers
     {
-      accept: 'application/vnd.justdoit.v1+json'
+      "Accept" => "application/vnd.buclist.v1+json"
     }
-  end
-
-  def valid_headers(user)
-    default_headers.merge(authorization: token(user).token)
-  end
-
-  def invalid_headers(token = nil)
-    default_headers.merge(authorization: token)
   end
 end
