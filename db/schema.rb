@@ -15,13 +15,6 @@ ActiveRecord::Schema.define(version: 20161215085219) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bucket_lists", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-  end
-
   create_table "bucketlists", force: :cascade do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -32,9 +25,9 @@ ActiveRecord::Schema.define(version: 20161215085219) do
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "done"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.boolean  "done",          default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "bucketlist_id"
   end
 
