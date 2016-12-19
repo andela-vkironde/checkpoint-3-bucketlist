@@ -2,7 +2,7 @@ module API
   module V1
     class ItemsController < ApplicationController
       before_action :bucketlist_items, only: [:index, :create]
-      before_action :set_bucketlist_item, only: [:show, :update]
+      before_action :set_bucketlist_item, only: [:show, :update, :destroy]
 
       def index
         json_response(paginate_items)
@@ -24,7 +24,8 @@ module API
       end
 
       def destroy
-
+        @item.destroy
+        json_response(message: Messages.deleted("item"))
       end
 
       private
