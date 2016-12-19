@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :item do
-    name { Faker::Space::galaxy }
+    name { Faker::Space.galaxy }
     done false
-    bucket_list
+    bucketlist_id 1
   end
 end
