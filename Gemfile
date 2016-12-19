@@ -24,6 +24,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem "coveralls", require: false
+  gem "database_cleaner"
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
