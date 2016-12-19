@@ -2,7 +2,7 @@ module API
   module V1
     class BucketlistsController < ApplicationController
       before_action :user_bucketlists, only: [:index, :create]
-      before_action :set_bucketlist, only: [:show]
+      before_action :set_bucketlist, only: [:show, :destroy]
 
       def index
         queried_bucketlists = search || paginate_only
@@ -17,6 +17,11 @@ module API
 
       def show
         json_response(@bucketlist)
+      end
+
+      def destroy
+        @bucketlist.destroy
+        json_response(message: Messages.deleted("bucketlist"))
       end
 
       private
