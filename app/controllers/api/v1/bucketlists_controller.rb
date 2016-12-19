@@ -2,6 +2,7 @@ module API
   module V1
     class BucketlistsController < ApplicationController
       before_action :user_bucketlists, only: [:index, :create]
+      before_action :set_bucketlist, only: [:show]
 
       def index
         queried_bucketlists = search || paginate_only
@@ -12,6 +13,10 @@ module API
         new_bucketlist = @bucketlists.new(bucketlist_params)
         new_bucketlist.save!
         json_response(new_bucketlist, :created)
+      end
+
+      def show
+        json_response(@bucketlist)
       end
 
       private
@@ -34,6 +39,15 @@ module API
 
       def user_bucketlists
         @bucketlists = @current_user.bucketlists
+      end
+
+      def set_bucketlist
+        @bucketlist = @current_user.bucketlists.find_by(id: params[:id])
+        unless @bucketlist
+          raise(
+            ActiveRecord::RecordNotFound, Messages.not_found("bucketlist")
+          )
+        end
       end
     end
   end
