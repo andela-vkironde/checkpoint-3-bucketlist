@@ -5,7 +5,6 @@ gem 'pg'
 gem 'bcrypt'
 gem "jwt"
 gem "active_model_serializers"
-# gem 'apiaryio'
 
 group :development, :test do
   gem 'byebug', platform: :mri
