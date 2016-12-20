@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/andela-vkironde/checkpoint-3-bucketlist.svg?branch=develop)](https://travis-ci.org/andela-vkironde/checkpoint-3-bucketlist)
+[![Code Climate](https://codeclimate.com/github/andela-vkironde/checkpoint-3-bucketlist/badges/gpa.svg)](https://codeclimate.com/github/andela-vkironde/checkpoint-3-bucketlist)
 
 # BCTLST
 
