@@ -3,15 +3,14 @@ class User < ApplicationRecord
   validates :password,
             presence: true,
             confirmation: true,
-            length:{minimum: 6}
+            length: { minimum: 6 }
   validates :password_confirmation,
             presence: true
   validates :email,
-            presence:true,
+            presence: true,
             uniqueness: true,
-            format:{with: VALID_EMAIL}
+            format: { with: VALID_EMAIL }
   has_secure_password
-
 
   has_many :bucketlists
   has_many :tokens

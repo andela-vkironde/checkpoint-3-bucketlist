@@ -13,5 +13,4 @@ class Bucketlist < ApplicationRecord
     end
     bucketlists
   end)
-
 end

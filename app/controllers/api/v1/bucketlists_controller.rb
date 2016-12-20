@@ -37,9 +37,9 @@ module API
 
       def search
         if params[:q] && @bucketlists
-          @bucketlists
-            .search(params[:q])
-            .paginate(params[:limit], params[:page])
+          @bucketlists.
+            search(params[:q]).
+            paginate(params[:limit], params[:page])
         end
       end
 
