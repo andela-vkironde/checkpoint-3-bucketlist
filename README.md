@@ -1,9 +1,10 @@
 [![Build Status](https://travis-ci.org/andela-vkironde/checkpoint-3-bucketlist.svg?branch=develop)](https://travis-ci.org/andela-vkironde/checkpoint-3-bucketlist)
 [![Code Climate](https://codeclimate.com/github/andela-vkironde/checkpoint-3-bucketlist/badges/gpa.svg)](https://codeclimate.com/github/andela-vkironde/checkpoint-3-bucketlist)
+[![Coverage Status](https://coveralls.io/repos/github/andela-vkironde/checkpoint-3-bucketlist/badge.svg?branch=develop)](https://coveralls.io/github/andela-vkironde/checkpoint-3-bucketlist?branch=develop)
 
 # BCTLST
 
-**Documentation** - [bctlst.herokuapp.com](http://bctlst-api.herokuapp.com).
+**Documentation** - [bctlst-api.herokuapp.com](http://bctlst-api.herokuapp.com).
 
 **Source code** - [https://github.com/andela-vkironde/checkpoint-3-bucketlist](https://github.com/andela-vkironde/checkpoint-3-bucketlist)
 
