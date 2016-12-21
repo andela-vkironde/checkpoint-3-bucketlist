@@ -4,14 +4,6 @@ class Messages
       "Sorry, #{resource} not found."
     end
 
-    def unauthorized
-      "Unauthorized request. Please login to continue."
-    end
-
-    def invalid_route
-      "Invalid route, refer to doc"
-    end
-
     def logout
       "Logged out successfully"
     end
@@ -46,10 +38,6 @@ class Messages
 
     def deleted(resource)
       "#{resource} deleted successfully"
-    end
-
-    def user_not_found
-      "User not found."
     end
   end
 end
