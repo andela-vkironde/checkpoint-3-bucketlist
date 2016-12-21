@@ -7,8 +7,3 @@ RSpec.shared_examples "an http response" do |status, message = nil|
     expect(json["message"]).to eq(message)
   end if message
 end
-
-RSpec.shared_examples "an unathorized response" do
-  let(:header) { invalid_headers }
-  it_behaves_like "an http response", 401, Messages.missing_token
-end
