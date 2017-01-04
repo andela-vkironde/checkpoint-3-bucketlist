@@ -2,7 +2,7 @@ module API
   module V1
     class ItemsController < ApplicationController
       before_action :bucketlist_items, only: [:index, :create]
-      before_action :set_bucketlist_item, only: [:show, :update, :destroy]
+      before_action :get_bucketlist_item, only: [:show, :update, :destroy]
 
       def index
         json_response(paginate_items)
@@ -38,7 +38,7 @@ module API
         @items.paginate(params[:limit], params[:page]) if @items
       end
 
-      def set_bucketlist_item
+      def get_bucketlist_item
         @item = item_bucketlist.items.find_by(id: params[:id]) if item_bucketlist
         unless @item
           raise(

@@ -2,7 +2,7 @@ module API
   module V1
     class BucketlistsController < ApplicationController
       before_action :user_bucketlists, only: [:index, :create]
-      before_action :set_bucketlist, only: [:show, :destroy, :update]
+      before_action :get_bucketlist, only: [:show, :destroy, :update]
 
       def index
         queried_bucketlists = search || paginate_only
@@ -47,7 +47,7 @@ module API
         @bucketlists.paginate(params[:limit], params[:page]) if @bucketlists
       end
 
-      def set_bucketlist
+      def get_bucketlist
         @bucketlist = @current_user.bucketlists.find_by(id: params[:id])
         unless @bucketlist
           raise(
