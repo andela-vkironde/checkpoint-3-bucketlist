@@ -25,7 +25,7 @@ RSpec.describe "List all bucketlists", type: :request do
     it_behaves_like("pagination with limit > 100", Bucketlist)
   end
 
-  context "when the queried bucket does not exist" do
+  context "when the queried bucket exists" do
     let(:queried_bucket) { create(:bucketlist, name: "queried bucket") }
     let(:params) { { q: queried_bucket.name } }
     it "returns the queried bucketlist" do
