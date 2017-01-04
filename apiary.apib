@@ -1,10 +1,12 @@
 FORMAT: 1A
-HOST: https://bctlst.herokuapp.com/
+HOST: https://bctlst-api.herokuapp.com/
 
 # BCTLST
 
 Bctlst is a simple API allowing consumers to manage Bucketlists.
 ## Signup [/signup]
+
+### Create a new account [POST]
 A user needs to sign up for an account to start using the API.
 + Request
 
@@ -67,6 +69,26 @@ A regestered user can login and acquire an authentication token.
 ## Bucketlists Collection [/bucketlists]
 
 ### List All Bucketlists [GET]
+
+You may list all your bucketlists with or without the following parameters:
+- page - the page to the results.
+- limit - the number of results to be returned. Maximum is 100. Default is 20
+- q - the search query. This enables you to search for an item by name
+
+
++ Request (application/json)
+
+    + Headers
+
+                Authorization: <authorization token>
+
++ Parameters
+    + page(optional, int)
+        + Default: 1
+    + limit(optional, int) the number of results to be displayed
+        + Default: 20
+    + q(optional, string) the query string
+        + Default: ""
 
 + Response 200 (application/json)
 
@@ -168,7 +190,14 @@ A user may delete an existing bucketlist using this action.
 
 ## Items Collection [/bucketlists/<id>/items]
 
+Lists all the items, with or without the following options:
+- page - the page to the results.
+- limit - the number of results to be returned. Maximum is 100. Default is 20
+- q - the search query. This enables you to search for an item by name
+
 ### List All Bucketlist items [GET]
+
+
 
 + Response 200 (application/json)
 
