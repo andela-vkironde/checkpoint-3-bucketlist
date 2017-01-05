@@ -2,7 +2,6 @@ class Pagination
   MAX_LIMIT = 100
   DEFAULT_LIMIT = 20
 
-
   def initialize(limit, page)
     @limit = limit.to_i
     @page = page.to_i

@@ -12,7 +12,7 @@ module Helpers
   end
 
   def invalid_tokens(user_id)
-    JsonWebToken.encode({ user_id: user_id } )
+    JsonWebToken.encode(user_id: user_id)
   end
 
   def valid_headers(user_id)
