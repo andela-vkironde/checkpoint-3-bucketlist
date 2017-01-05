@@ -1,5 +1,5 @@
 class Bucketlist < ApplicationRecord
-  extend Pagination
+  extend Paginable
   validates_presence_of :name
   belongs_to :user
   has_many :items
