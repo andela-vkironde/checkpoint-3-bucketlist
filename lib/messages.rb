@@ -39,5 +39,9 @@ class Messages
     def deleted(resource)
       "#{resource} deleted successfully"
     end
+
+    def user_not_found
+      "User was not found"
+    end
   end
 end
