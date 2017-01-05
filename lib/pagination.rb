@@ -1,11 +1,15 @@
-module Pagination
+class Pagination
   MAX_LIMIT = 100
   DEFAULT_LIMIT = 20
 
-  def paginate(limit, page)
+
+  def initialize(limit, page)
     @limit = limit.to_i
     @page = page.to_i
-    limit(get_limit).order("id ASC").offset(get_offset)
+  end
+
+  def paginate
+    { limit: get_limit, offset: get_offset }
   end
 
   private
