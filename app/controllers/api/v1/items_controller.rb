@@ -39,7 +39,8 @@ module API
       end
 
       def get_bucketlist_item
-        @item = item_bucketlist.items.find_by(id: params[:id]) if item_bucketlist
+        @item =
+          item_bucketlist.items.find_by(id: params[:id]) if item_bucketlist
         unless @item
           raise(
             ActiveRecord::RecordNotFound, Messages.not_found("item")
