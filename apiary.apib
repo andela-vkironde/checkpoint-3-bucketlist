@@ -1,0 +1,289 @@
+FORMAT: 1A
+HOST: https://bctlst-api.herokuapp.com/
+
+# BCTLST
+
+Bctlst is a simple API allowing consumers to manage Bucketlists.
+## Signup [/signup]
+
+### Create a new account [POST]
+A user needs to sign up for an account to start using the API.
++ Request
+
+
+        {
+            "first_name": "John",
+            "last_name": "Doe",
+            "email":"user@example.com",
+            "password":"password",
+            "password_confirmation":"password"
+        }
+
++ Response 201 (application/json)
+
+        {
+          "message": "Account created successfully",
+          "token": <authorization token>
+        }
+
+
+
+## Login [/auth/login]
+
+### Login a User [POST]
+A regestered user can login and acquire an authentication token.
+
++ Request
+
+        {
+            "email":"user@example.com",
+            "password":"password"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "token": <authorization token>,
+            "message": "Logged in successfully"
+        }
+
+
+
+## Logout [/auth/logout]
+
+###Logout a user [GET]
+
++ Request
+
+    + Headers
+
+            Authorization: <authorization token>
+
++ Response 200 (application/json)
+
+        {
+            "message": "Logged out successfully"
+        }
+
+
+## Bucketlists Collection [/bucketlists]
+
+### List All Bucketlists [GET]
+
+You may list all your bucketlists with or without the following parameters:
+- page - the page to the results.
+- limit - the number of results to be returned. Maximum is 100. Default is 20
+- q - the search query. This enables you to search for an item by name
+
+
++ Request (application/json)
+
+    + Headers
+
+                Authorization: <authorization token>
+
++ Parameters
+    + page(optional, int)
+        + Default: 1
+    + limit(optional, int) the number of results to be displayed
+        + Default: 20
+    + q(optional, string) the query string
+        + Default: ""
+
++ Response 200 (application/json)
+
+        [
+            {
+                id: 1,
+                name: “BucketList1”,
+                items:
+                [
+                   {
+                        id: 1,
+                        name: “I need to do X”,
+                        date_created: “2015-08-12 11:57:23”,
+                        date_modified: “2015-08-12 11:57:23”,
+                        done: False
+                    }
+                ]
+                date_created: “2015-08-12 11:57:23”,
+                date_modified: “2015-08-12 11:57:23”
+                created_by: “1113456”
+            }
+        ]
+
+### Create a New Bucketlist [POST]
+
+You may create your own bucketlist using this action. It takes a JSON
+object containing a name
+
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: <authorization token>
+
+    + Body
+
+
+            {
+                "name": "BucketList1"
+            }
+
++ Response 201 (application/json)
+
+            {
+                id: 1,
+                name: “BucketList1”,
+                items:[],
+                date_created: “2015-08-12 11:57:23”,
+                date_modified: “2015-08-12 11:57:23”
+                created_by: “1113456”
+            }
+
+
+## Bucketlist Record [/bucketlists/<id>]
+
+### Update a Bucketlist [PUT]
+A user may update an existing bucketlist using this action. It takes a JSON object containing attributes to update.
+
++ Request
+
+    + Headers
+
+            Authorization: <authorization token>
+
+    + Body
+
+            {
+                "name": "new bucketlist name"
+            }
+
++ Response 200 (application/json)
+
+            {
+                id: 1,
+                name: “new bucketlist name”,
+                items:[],
+                date_created: “2015-08-12 11:57:23”,
+                date_modified: “2015-08-12 11:57:23”
+                created_by: “1113456”
+            }
+
+
+### Delete a Bucketlist [DELETE]
+A user may delete an existing bucketlist using this action.
+
++ Request
+
+    + Headers
+
+            Authorization: <authorization token>
+
+
++ Response 200 (application/json)
+
+            {
+              "message": "bucketlist deleted successfully"
+            }
+
+## Items Collection [/bucketlists/<id>/items]
+
+Lists all the items, with or without the following options:
+- page - the page to the results.
+- limit - the number of results to be returned. Maximum is 100. Default is 20
+- q - the search query. This enables you to search for an item by name
+
+### List All Bucketlist items [GET]
+
+
+
++ Response 200 (application/json)
+
+            [
+               {
+                    id: 1,
+                    name: “I need to do X”,
+                    date_created: “2015-08-12 11:57:23”,
+                    date_modified: “2015-08-12 11:57:23”,
+                    done: False
+                }
+            ]
+
+
+### Create a New Item [POST]
+
+You may add an item to an existing bucketlist using this action. It takes a JSON
+object containing a name and a status.
+
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: <authorization token>
+
+    + Body
+
+
+            {
+                "name": "I want to do xyz",
+                "done": false
+            }
+
++ Response 201 (application/json)
+
+            {
+              "id": 1,
+              "name": "I want to do xyz",
+              "date_created": <creation date>,
+              "date_modified": <modification date>,
+              "done": false
+            }
+
+
+## Item Record [/bucketlists/<id>/items/<id>]
+
+### Update an Item [PUT]
+A user may update an existing item using this action. It takes a JSON object containing item attributes to update.
+
++ Request
+
+    + Headers
+
+            Authorization: <authorization token>
+
+    + Body
+
+            {
+                "name": "i did xyz!"
+                "done": true
+            }
+
++ Response 200 (application/json)
+
+            {
+              "id": 1,
+              "name": "i did xyz!",
+              "date_created": <creation date>,
+              "date_modified": <modification date>,
+              "done": true
+            }
+
+
+### Delete an Item [DELETE]
+A user may delete an existing item using this action.
+
++ Request
+
+    + Headers
+
+            Authorization: <authorization token>
+
+
++ Response 200 (application/json)
+
+            {
+              "message": "item deleted successfully"
+            }
