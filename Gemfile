@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-gem 'puma', '~> 3.0'
+gem 'rails'
+gem 'puma'
 gem 'pg'
 gem 'bcrypt'
 gem "jwt"
@@ -10,14 +10,14 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'faker'
-  gem "rubocop", "~> 0.40.0", require: false
+  gem "rubocop"
   gem 'pry-rails'
 end
 
 group :development do
-  gem 'listen', '~> 3.0.5'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
 end
 
 group :test do
